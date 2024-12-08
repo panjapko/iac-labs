@@ -27,9 +27,17 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.11"
-    - uses: snok/install-poetry@v1.3.4
-      name: Install Poetry Action
+    - name: Install Poetry Action
+      uses: snok/install-poetry@v1.3.4
     - name: Install Deps
       run: poetry install --no-root
+    - name: Run Lint
+      run: poetry run task lint
+    - name: Run Format
+      run: poetry run task formatter
+    - name: Run Sec
+      run: poetry run task security
+    - name: Run Tests
+      run: poetry run task test
     
                 
